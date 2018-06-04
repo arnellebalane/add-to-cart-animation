@@ -1,11 +1,24 @@
 <template>
     <div class="cart-widget">
-        <span v-if="itemsCount" class="items-count">{{ itemsCount }}</span>
-        <img src="../images/cart.png" alt="Cart Icon" class="cart-icon">
+        <span
+            ref="count"
+            v-show="itemsCount"
+            class="items-count"
+        >
+            {{ itemsCount }}
+        </span>
+
+        <img
+            ref="icon"
+            src="../images/cart.png"
+            alt="Cart Icon" class="cart-icon"
+        />
     </div>
 </template>
 
 <script>
+    import anime from 'animejs';
+
     export default {
         name: 'CartWidget',
 
@@ -13,6 +26,46 @@
             return {
                 itemsCount: 0
             };
+        },
+
+        methods: {
+            add() {
+                this.itemsCount++;
+                this.animate();
+            },
+
+            animate() {
+                anime.timeline({
+                    targets: this.$refs.icon,
+                    duration: 90
+                }).add({
+                    scale: 0.8,
+                    easing: 'easeInQuad'
+                }).add({
+                    scale: 1,
+                    easing: 'easeOutQuad'
+                });
+
+                const count = anime.timeline({
+                    targets: this.$refs.count,
+                    duration: 90
+                });
+
+                if (this.itemsCount === 1) {
+                    count.add({
+                        scale: 0,
+                        duration: 0
+                    });
+                }
+
+                count.add({
+                    scale: 1.2,
+                    easing: 'easeInQuad'
+                }).add({
+                    scale: 1,
+                    easing: 'easeOutQuad'
+                });
+            }
         }
     };
 </script>
@@ -37,7 +90,7 @@
         position: absolute;
         top: 0;
         right: 0;
-        font-size: 26px;
+        font-size: 24px;
         line-height: 50px;
         text-align: center;
         color: #fff;

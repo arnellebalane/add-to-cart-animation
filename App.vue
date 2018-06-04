@@ -1,7 +1,7 @@
 <template>
     <div class="app" id="app">
-        <CartWidget />
-        <AddToCartButton />
+        <CartWidget ref="cart" />
+        <AddToCartButton @click="$refs.cart.add()" />
     </div>
 </template>
 
