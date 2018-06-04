@@ -25,11 +25,10 @@
         color: #fff;
         background-color: #ff3355;
         cursor: pointer;
-        transition: opacity 300ms ease;
+        transition: opacity 200ms ease;
     }
 
-    .add-to-cart-button:hover,
-    .add-to-cart-button:focus {
-        opacity: 0.5;
+    .add-to-cart-button:hover {
+        opacity: 0.75;
     }
 </style>

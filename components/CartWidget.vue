@@ -75,21 +75,21 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 150px;
-        height: 150px;
+        width: 160px;
+        height: 160px;
         border: 6px solid #3a3a3a;
         border-radius: 50%;
         position: relative;
     }
 
     .items-count {
-        width: 50px;
-        height: 50px;
+        width: 60px;
+        height: 60px;
         border: 5px solid #fff;
         border-radius: 50%;
         position: absolute;
-        top: 0;
-        right: 0;
+        top: calc(50% - 30px - 69.2820323px);
+        left: calc(50% - 30px + 40px);
         font-size: 24px;
         line-height: 50px;
         text-align: center;
