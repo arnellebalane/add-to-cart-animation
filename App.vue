@@ -1,11 +1,17 @@
 <template>
     <div class="app" id="app">
-        <h1>Add-to-Cart Animation</h1>
+        <CartWidget />
     </div>
 </template>
 
 <script>
+    import CartWidget from './components/CartWidget.vue';
+
     export default {
-        name: 'App'
+        name: 'App',
+
+        components: {
+            CartWidget
+        }
     };
 </script>
