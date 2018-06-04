@@ -13,6 +13,11 @@
             src="../images/cart.png"
             alt="Cart Icon" class="cart-icon"
         />
+
+        <!-- <svg>
+            <path ref="larc" d="M 41.5 146.683956 A 77 77 0 1 1 118.5 13.3160439" stroke="red" />
+            <path ref="rarc" d="M 41.5 146.683956 A 77 77 0 1 0 118.5 13.3160439" stroke="blue" />
+        </svg> -->
     </div>
 </template>
 
@@ -90,7 +95,8 @@
         position: absolute;
         top: calc(50% - 30px - 69.2820323px);
         left: calc(50% - 30px + 40px);
-        font-size: 24px;
+        z-index: 1;
+        font-size: 23px;
         line-height: 50px;
         text-align: center;
         color: #fff;
@@ -100,5 +106,19 @@
     .cart-icon {
         width: 65px;
         height: 65px;
+    }
+
+    svg {
+        width: 160px;
+        height: 160px;
+        position: absolute;
+        top: -6px;
+        left: -6px;
+    }
+
+    path {
+        /*stroke: #ff3355;*/
+        stroke-width: 6;
+        fill: none;
     }
 </style>
