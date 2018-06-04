@@ -33,6 +33,16 @@
             };
         },
 
+        mounted() {
+            anime({
+                targets: this.$el,
+                duration: 700,
+                scale: [1.2, 1],
+                opacity: [0, 1],
+                easing: 'easeOutQuad'
+            });
+        },
+
         methods: {
             add() {
                 this.itemsCount++;
