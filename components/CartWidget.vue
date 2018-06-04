@@ -14,10 +14,10 @@
             alt="Cart Icon" class="cart-icon"
         />
 
-        <!-- <svg>
-            <path ref="larc" d="M 41.5 146.683956 A 77 77 0 1 1 118.5 13.3160439" stroke="red" />
-            <path ref="rarc" d="M 41.5 146.683956 A 77 77 0 1 0 118.5 13.3160439" stroke="blue" />
-        </svg> -->
+        <svg>
+            <path ref="larc" d="M 41.5 146.683956 A 77 77 0 1 1 118.5 13.3160439" stroke-dasharray="0 483.805269" />
+            <path ref="rarc" d="M 41.5 146.683956 A 77 77 0 1 0 118.5 13.3160439" stroke-dasharray="0 483.805269" />
+        </svg>
     </div>
 </template>
 
@@ -45,16 +45,31 @@
 
         methods: {
             add() {
-                this.itemsCount++;
+                setTimeout(() => this.itemsCount++, 275);
                 this.animate();
             },
 
             animate() {
+                anime({
+                    duration: 400,
+                    easing: 'easeInExpo',
+                    update: animation => {
+                        const dashArray = (483.805269 / 2) * (animation.progress / 100);
+                        this.$refs.larc.setAttribute('stroke-dasharray', `${dashArray} 483.805269`);
+                        this.$refs.rarc.setAttribute('stroke-dasharray', `${dashArray} 483.805269`);
+
+                        const dashOffset = -(483.805269 / 2) * (animation.progress / 100);
+                        this.$refs.larc.setAttribute('stroke-dashoffset', dashOffset);
+                        this.$refs.rarc.setAttribute('stroke-dashoffset', dashOffset);
+                    }
+                });
+
                 anime.timeline({
                     targets: this.$refs.icon,
                     duration: 90
                 }).add({
                     scale: 0.8,
+                    delay: 275,
                     easing: 'easeInQuad'
                 }).add({
                     scale: 1,
@@ -66,7 +81,7 @@
                     duration: 90
                 });
 
-                if (this.itemsCount === 1) {
+                if (!this.itemsCount) {
                     count.add({
                         scale: 0,
                         duration: 0
@@ -75,6 +90,7 @@
 
                 count.add({
                     scale: 1.2,
+                    delay: 275,
                     easing: 'easeInQuad'
                 }).add({
                     scale: 1,
@@ -127,7 +143,7 @@
     }
 
     path {
-        /*stroke: #ff3355;*/
+        stroke: #ff3355;
         stroke-width: 6;
         fill: none;
     }
