@@ -17,6 +17,7 @@
     "parcel-plugin-vue": "1.5.0"
   },
   "dependencies": {
+    "animejs": "2.2.0",
     "vue": "2.5.16"
   }
 }
